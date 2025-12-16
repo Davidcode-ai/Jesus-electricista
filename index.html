@@ -44,7 +44,7 @@
             display: flex; 
             align-items: center; 
             gap: 5px;
-            white-space: nowrap; /* Evita que el texto se parta feo */
+            white-space: nowrap; 
         }
         .logo span { color: var(--accent); }
         
@@ -163,16 +163,22 @@
         @media(max-width: 768px) {
             .nav-links { display: none; }
             
-            /* AQUÍ ESTÁ EL ARREGLO DEL LOGO */
-            nav { justify-content: space-between; } /* Repartir espacio izquierda/derecha */
+            nav { justify-content: space-between; }
             
             .logo { 
-                flex: unset; /* Quitamos el flex 1 para que no ocupe 50% forzado */
-                font-size: 0.9rem; /* Un poco más pequeño para que quepa bien */
-                max-width: 65%; /* Limite para que no empuje al teléfono */
-                white-space: normal; /* Permitir salto de línea si es necesario en pantallas muy minis */
+                flex: unset; 
+                font-size: 0.9rem; 
+                max-width: 65%; /* Limite para el menú de arriba */
+                white-space: normal; 
                 line-height: 1.1;
             }
+
+            /* --- ARREGLO PARA QUE EL FOOTER SE CENTRE --- */
+            footer .logo {
+                max-width: 100%; /* Quitamos el limite en el footer */
+                justify-content: center; /* Centramos el texto */
+            }
+            /* ------------------------------------------- */
             
             .nav-phone { 
                 flex: unset; 
