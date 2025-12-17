@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electricista Jesús | Urgencias 24h y Reparaciones</title>
-    <meta name="description" content="Servicio oficial de electricidad urgencias 24h. Jesús Electricista. Rapidez, garantía y buen precio. Llama ahora.">
+    <title>Electricista Jesús | Urgencias 24h Cádiz</title>
+    <meta name="description" content="Electricista urgente 24h en provincia de Cádiz. Jesús Electricista. Rapidez, garantía y buen precio. Llama ahora.">
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     
@@ -16,12 +16,16 @@
             --bg-light: #f8f9fa;
             --white: #ffffff;
             --success: #25D366;    /* WhatsApp */
+            --alert: #d90429;      /* Rojo Urgencia Pop-up */
         }
 
         /* RESET Y BASE */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; } /* Desplazamiento suave al hacer clic en menú */
-        body { font-family: 'Open Sans', sans-serif; background-color: var(--white); color: #333; padding-bottom: 80px; } 
+        html { scroll-behavior: smooth; }
+        
+        /* CORRECCIÓN: Quitamos padding-bottom de aquí para eliminar el hueco blanco */
+        body { font-family: 'Open Sans', sans-serif; background-color: var(--white); color: #333; } 
+        
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; }
 
         /* --- 1. BARRA DE NAVEGACIÓN --- */
@@ -114,30 +118,27 @@
         .service-card h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.2rem; }
         .service-card p { color: #666; font-size: 0.95rem; line-height: 1.6; }
 
-        /* --- 5. POR QUÉ ELEGIRNOS --- */
+        /* --- 5. ZONAS DE ACTUACIÓN (MAPA BLOQUEADO) --- */
+        .map-section { background: var(--bg-light); padding: 50px 20px; text-align: center; scroll-margin-top: 80px;}
+        .map-box {
+            background: white; max-width: 100%; margin: 0 auto; padding: 10px;
+            border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            height: 400px; 
+            position: relative;
+        }
+        .map-box iframe {
+            width: 100%; height: 100%; border-radius: 8px; border: none;
+            pointer-events: none; /* BLOQUEA EL MOVIMIENTO */
+        }
+        .map-text { margin-top: 20px; font-weight: 600; color: #555; }
+
+        /* --- 6. POR QUÉ ELEGIRNOS --- */
         .why-us { background: var(--primary); color: white; padding: 50px 20px; }
         .why-grid { max-width: 800px; margin: 0 auto; display: grid; gap: 15px; }
         .why-item { display: flex; align-items: center; gap: 15px; font-size: 1rem; font-weight: 600; }
         .check { color: var(--accent); font-size: 1.3rem; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 50%; min-width: 35px; text-align: center; }
 
-        /* --- 6. FORMULARIO --- */
-        .contact-section { background: var(--bg-light); padding: 50px 20px; text-align: center; scroll-margin-top: 80px;}
-        .form-box {
-            background: white; max-width: 100%; margin: 0 auto; padding: 25px;
-            border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-        .input-group { margin-bottom: 15px; text-align: left; }
-        
-        /* ACCESIBILIDAD: Label conectado con Input */
-        .input-group label { display: block; font-weight: 700; margin-bottom: 5px; font-size: 0.9rem; }
-        .input-field { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-family: inherit; font-size: 1rem; }
-        
-        .btn-submit {
-            width: 100%; background: var(--dark); color: white; border: none; padding: 15px;
-            font-weight: 700; border-radius: 5px; cursor: pointer; font-size: 1rem; margin-top: 10px;
-        }
-
-        /* --- 7. FOOTER --- */
+        /* --- 7. FOOTER (Aquí mantenemos el padding para los botones flotantes) --- */
         footer { background: #111; color: #888; padding: 40px 20px; text-align: center; font-size: 0.85rem; padding-bottom: 90px; }
         .footer-links { margin: 20px 0; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;}
         .footer-links a { color: #888; text-decoration: none; cursor: pointer; transition: 0.3s; }
@@ -163,6 +164,8 @@
         .whatsapp-float:hover { transform: scale(1.1); }
         
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes shake { 0% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } 100% { transform: translateX(0); } }
+
 
         /* --- VENTANA MODAL (POPUP LEGAL) --- */
         .modal-overlay {
@@ -180,6 +183,23 @@
         .modal-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 15px; color: var(--primary); }
         .modal-text { font-size: 0.9rem; line-height: 1.6; color: #555; }
 
+        /* --- POPUP URGENCIA (EL TIBURÓN) --- */
+        #urgencyModal {
+            display: none; /* Se activa con JS */
+            z-index: 20000; /* Por encima de todo */
+        }
+        .urgency-box {
+            text-align: center; border-top: 8px solid var(--alert);
+        }
+        .urgency-icon { font-size: 3rem; margin-bottom: 10px; display: block; animation: shake 1s infinite; }
+        .urgency-title { color: var(--alert); font-size: 1.8rem; font-weight: 900; margin-bottom: 10px; line-height: 1.1; }
+        .urgency-text { font-size: 1.1rem; margin-bottom: 25px; color: #333; }
+        .btn-urgency {
+            background: var(--alert); color: white; padding: 20px 30px; border-radius: 5px; text-decoration: none;
+            font-weight: 900; font-size: 1.2rem; display: block; width: 100%; text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(217, 4, 41, 0.4); animation: pulse 1.5s infinite;
+        }
+
         /* --- MEDIA QUERIES (ARREGLO MÓVIL) --- */
         @media(max-width: 768px) {
             .nav-links { display: none; }
@@ -194,6 +214,7 @@
             .stat-item h3 { font-size: 1.5rem; }
             .service-card { padding: 20px; }
             .why-item { font-size: 0.95rem; }
+            .map-box { height: 300px; }
         }
     </style>
 </head>
@@ -203,10 +224,10 @@
         <div class="logo">⚡ SERVICIOS <span>ELÉCTRICOS</span></div>
         <div class="nav-links">
             <a href="#servicios">Servicios</a>
+            <a href="#mapa">Zonas</a>
             <a href="#urgencias">Urgencias</a>
-            <a href="#contacto">Contacto</a>
         </div>
-        <a href="tel:635218873" class="nav-phone" aria-label="Llamar al electricista">📞 635218873</a>
+        <a href="tel:635218873" class="nav-phone" aria-label="Llamar al electricista">📞 635 21 88 73</a>
     </nav>
 
     <header class="hero">
@@ -241,13 +262,24 @@
             <div class="service-card" style="border-top-color: var(--accent);">
                 <span class="icon" aria-hidden="true">🛠️</span>
                 <h3>Servicio Manitas</h3>
-                <p>Reparaciones generales del hogar, montaje de muebles, colgar lámparas y pequeños arreglos.</p>
+                <p>Reparaciones generales del hogar, colgar lámparas y pequeños arreglos.</p>
             </div>
             <div class="service-card">
                 <span class="icon" aria-hidden="true">💡</span>
                 <h3>Instalaciones</h3>
                 <p>Instalaciones nuevas y reformas eléctricas completas.</p>
             </div>
+        </div>
+    </section>
+
+    <section id="mapa" class="map-section">
+        <h2 class="section-title">Dónde <span>Actuamos</span></h2>
+        <p style="margin-bottom:20px; color:#555;">Servicio rápido en toda la Provincia de Cádiz</p>
+        <div class="map-box">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d411606.3663046714!2d-6.07986685!3d36.42777265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0c44d1835775dd%3A0x30463135930e1b0!2zQ8OhZGl6!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" allowfullscreen="" loading="lazy" title="Mapa provincia Cádiz"></iframe>
+        </div>
+        <div class="map-text">
+            <p>📍 Jerez · San Fernando · Chiclana · El Puerto De Santa María · Cádiz Capital y Alrededores</p>
         </div>
     </section>
 
@@ -258,22 +290,6 @@
             <div class="why-item"><span class="check" aria-hidden="true">✔</span> Presupuesto cerrado antes de empezar</div>
             <div class="why-item"><span class="check" aria-hidden="true">✔</span> Rapidez en la asistencia</div>
             <div class="why-item"><span class="check" aria-hidden="true">✔</span> Materiales de primera calidad</div>
-        </div>
-    </section>
-
-    <section id="contacto" class="contact-section">
-        <h2 class="section-title">Pide tu <span>Presupuesto</span></h2>
-        <div class="form-box">
-            <p style="margin-bottom:20px; color:#666;">Déjanos tus datos o llámanos directamente.</p>
-            <div class="input-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" class="input-field" placeholder="Tu nombre">
-            </div>
-            <div class="input-group">
-                <label for="telefono">Teléfono</label>
-                <input type="tel" id="telefono" class="input-field" placeholder="Tu teléfono">
-            </div>
-            <button class="btn-submit" onclick="location.href='https://wa.me/34635218873'">ENVIAR POR WHATSAPP ➤</button>
         </div>
     </section>
 
@@ -296,6 +312,16 @@
         <a href="tel:635218873" class="sticky-btn btn-call" aria-label="Llamar">📞 LLAMAR</a>
     </div>
 
+    <div id="urgencyModal" class="modal-overlay">
+        <div class="modal-content urgency-box">
+            <span class="modal-close" onclick="closeUrgency()">×</span>
+            <span class="urgency-icon">⚠️</span>
+            <div class="urgency-title">¿TIENES UNA URGENCIA?</div>
+            <p class="urgency-text">Llego en 30 minutos. Servicio rápido.</p>
+            <a href="tel:635218873" class="btn-urgency" onclick="closeUrgency()">📞 LLAMAR AHORA</a>
+        </div>
+    </div>
+
     <div id="legalModal" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal(event)">×</span>
@@ -304,20 +330,29 @@
                 <p>Este sitio web cumple con la normativa de protección de datos. Para ejercer sus derechos o solicitar información detallada sobre nuestros términos legales, por favor contacte directamente a través del número de teléfono facilitado.</p>
                 <br>
                 <p>Responsable: Jesús - Servicios Eléctricos</p>
-                <p>Teléfono: 635218873</p>
+                <p>Teléfono: 635 21 88 73</p>
                 <br>
+                <p style="font-size:0.8rem; color:#888;">*Texto legal estándar. Contacte para más detalles.*</p>
             </div>
         </div>
     </div>
 
     <script>
-        // Función para abrir la ventana modal
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('urgencyModal').style.display = 'flex';
+            }, 1500);
+        }
+
+        function closeUrgency() {
+            document.getElementById('urgencyModal').style.display = 'none';
+        }
+
         function openModal(title) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('legalModal').style.display = 'flex';
         }
 
-        // Función para cerrar
         function closeModal(event) {
             if (event.target.className === 'modal-overlay' || event.target.className === 'modal-close') {
                 document.getElementById('legalModal').style.display = 'none';
@@ -353,7 +388,3 @@
     </script>
 </body>
 </html>
-
-
-
-
