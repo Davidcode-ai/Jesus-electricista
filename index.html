@@ -3,15 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Averías Cádiz | Electricista Urgencias 24h</title>
-    <meta name="description" content="Electricista urgente 24h en provincia de Cádiz. Averías Cádiz. Rapidez, garantía y buen precio. Llegamos en menos de 3 horas.">
+    
+    <title>Electricista Cádiz Urgencias 24h | Averías Cádiz</title>
+    
+    <meta name="description" content="¿Necesitas un electricista urgente en Cádiz? Llego en menos de 3 horas. Precios cerrados, instalador autorizado y garantía 100%. Llama ahora: 635 21 88 73.">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.averiascadiz.es/">
+    <meta property="og:title" content="⚡ Electricista Urgente 24h en Cádiz - Llego Rápido">
+    <meta property="og:description" content="Averías eléctricas, apagones y reparaciones. Instalador Autorizado. Atención inmediata en toda la provincia.">
+    <meta property="og:image" content="https://www.averiascadiz.es/logo1.jpg">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
+    
+    <meta name="geo.region" content="ES-CA">
+    <meta name="geo.placename" content="Cádiz">
     <meta name="theme-color" content="#195396">
 
-    <link rel="icon" href="logo1.jpg" type="image/jpg">
+    <link rel="canonical" href="https://www.averiascadiz.es/">
+
+    <link rel="icon" href="logo1.jpg" type="image/jpeg">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Electrician",
+      "name": "Averías Cádiz",
+      "image": "https://www.averiascadiz.es/logo1.jpg",
+      "telephone": "+34635218873",
+      "url": "https://www.averiascadiz.es/",
+      "priceRange": "€€",
+      "description": "Servicio de electricista urgente 24 horas en la provincia de Cádiz. Reparación de averías, apagones e instalaciones.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cádiz",
+        "addressRegion": "Cádiz",
+        "addressCountry": "ES"
+      },
+      "areaServed": [
+        "Cádiz",
+        "Jerez de la Frontera",
+        "San Fernando",
+        "El Puerto de Santa María",
+        "Chiclana de la Frontera"
+      ],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    }
+    </script>
     
     <style>
         :root {
@@ -37,10 +92,10 @@
         
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; }
 
-        /* UTILIDADES SVG (para iconos pequeños) */
+        /* UTILIDADES SVG */
         .svg-icon { width: 1em; height: 1em; fill: currentColor; vertical-align: -0.125em; }
 
-        /* ESTILOS DEL LOGO DE IMAGEN */
+        /* ESTILOS DEL LOGO */
         .brand-logo-container {
             display: flex;
             align-items: center;
@@ -48,7 +103,6 @@
             text-decoration: none;
         }
         .brand-logo-img {
-            /* Dimensiones fijas para evitar saltos de diseño */
             width: 50px; 
             height: 50px; 
             object-fit: contain;
@@ -99,7 +153,7 @@
 
         /* --- 2. HERO SECTION --- */
         .hero {
-            /* Degradado más oscuro para mejor contraste (Accesibilidad) */
+            /* Degradado oscuro para asegurar contraste AA/AAA */
             background: linear-gradient(rgba(10, 46, 82, 0.92), rgba(10, 30, 60, 0.95)), url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
@@ -286,7 +340,7 @@
             box-shadow: 0 5px 15px rgba(217, 4, 41, 0.4); animation: pulse 1.5s infinite;
         }
 
-        /* MEDIA QUERIES OPTIMIZADAS */
+        /* MEDIA QUERIES RESPONSIVE */
         @media(max-width: 768px) {
             .nav-links { display: none; }
             nav { justify-content: space-between; padding: 10px 15px; }
@@ -316,18 +370,19 @@
     <nav>
         <div class="nav-brand">
             <a href="#" class="brand-logo-container">
-                <img src="logo.png" alt="Logotipo Averías Cádiz" class="brand-logo-img" width="50" height="50">
+                <img src="logo1.jpg" alt="Logotipo Averías Cádiz" class="brand-logo-img" width="50" height="50">
                 <div class="brand-text">
                     AVERÍAS
                     <span>CÁDIZ</span>
                 </div>
             </a>
         </div>
+        
         <div class="nav-links">
             <a href="#servicios">Servicios</a>
             <a href="#mapa">Zonas</a>
-            <a href="#porque-nosotros">Porqué nosotros</a>
         </div>
+        
         <a href="tel:635218873" class="nav-phone" aria-label="Llamar al electricista">📞 635 21 88 73</a>
     </nav>
 
@@ -398,7 +453,7 @@
         
         <div class="map-box">
             <iframe 
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d686132.3346903991!2d-6.438875829604597!3d36.52454498831276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0daa4e5acf186b%3A0x30463fd8c9fc9e0!2zQ8OhZGl6!5e1!3m2!1ses!2ses!4v1766109525953!5m2!1ses!2ses"
+                src="https://googleusercontent.com/maps.google.com/14" 
                 width="100%" 
                 height="100%" 
                 style="border:0;" 
@@ -414,7 +469,7 @@
         </div>
     </section>
 
-    <section id="porque-nosotros" class="why-us">
+    <section id="urgencias" class="why-us">
         <h2 style="text-align:center; margin-bottom:40px;">¿Por qué confiar en Averías Cádiz?</h2>
         <div class="why-grid">
             <div class="why-item">
@@ -439,7 +494,7 @@
     <footer>
         <div style="display:flex; justify-content:center; margin-bottom:20px;">
             <a href="#" class="brand-logo-container">
-                <img src="logo.png" alt="Logotipo Averías Cádiz" class="brand-logo-img" width="50" height="50">
+                <img src="logo1.jpg" alt="Logotipo Averías Cádiz" class="brand-logo-img" width="50" height="50">
                 <div class="brand-text" style="color:white;">
                     AVERÍAS
                     <span>CÁDIZ</span>
