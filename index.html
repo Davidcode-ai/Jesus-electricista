@@ -21,7 +21,6 @@
     <meta name="theme-color" content="#195396">
 
     <link rel="canonical" href="https://www.averiascadiz.es/">
-
     <link rel="icon" href="logo1.jpg" type="image/jpeg">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,19 +48,14 @@
         "Jerez de la Frontera",
         "San Fernando",
         "El Puerto de Santa María",
-        "Chiclana de la Frontera"
+        "Chiclana de la Frontera",
+        "Puerto Real",
+        "Rota",
+        "Sanlúcar de Barrameda"
       ],
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         "opens": "00:00",
         "closes": "23:59"
       }
@@ -153,7 +147,6 @@
 
         /* --- 2. HERO SECTION --- */
         .hero {
-            /* Degradado oscuro para asegurar contraste AA/AAA */
             background: linear-gradient(rgba(10, 46, 82, 0.92), rgba(10, 30, 60, 0.95)), url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
@@ -452,15 +445,15 @@
         <p style="margin-bottom:20px; color:#555;">Desplazamiento rápido en toda la Provincia de Cádiz</p>
         
         <div class="map-box">
-            <iframe 
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d686132.3346903991!2d-6.438875829604571!3d36.52454498831276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0daa4e5acf186b%3A0x30463fd8c9fc9e0!2zQ8OhZGl6!5e1!3m2!1ses!2ses!4v1766140037970!5m2!1ses!2ses" 
-                width="600" 
-                height="450" 
+             <iframe 
+                src="https://maps.google.com/maps?q=Provincia+de+Cádiz&z=9&output=embed" 
+                width="100%" 
+                height="100%" 
                 style="border:0;" 
                 allowfullscreen="" 
                 loading="lazy" 
                 referrerpolicy="no-referrer-when-downgrade"
-                title="Mapa de la provincia de cádiz">
+                title="Mapa de la Provincia de Cádiz">
             </iframe>
         </div>
 
@@ -529,19 +522,25 @@
     </div>
 
     <script>
-        // Lógica simple y eficiente para el modal
         window.onload = function() {
-            setTimeout(() => {
-                document.getElementById('urgencyModal').style.display = 'flex';
-            }, 2000);
+            if (!sessionStorage.getItem('popupShown')) {
+                setTimeout(() => {
+                    document.getElementById('urgencyModal').style.display = 'flex';
+                    sessionStorage.setItem('popupShown', 'true');
+                }, 3000);
+            }
         }
 
         function closeUrgency() {
             document.getElementById('urgencyModal').style.display = 'none';
         }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById('urgencyModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
-
-
-
